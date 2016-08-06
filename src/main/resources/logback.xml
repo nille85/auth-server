@@ -9,8 +9,8 @@
         </encoder>
     </appender>
         
-    <logger name="be.nille.client" level="TRACE" />
-    <logger name="be.nille.jwt" level="TRACE" />
+    <logger name="be.nille.auth" level="TRACE" />
+    <logger name="be.nille.jwt" level="INFO" />
     <root level="INFO">
         <appender-ref ref="STDOUT" />
     </root>
