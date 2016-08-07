@@ -44,7 +44,7 @@ public class ClientController {
         return clientService.getClients();
     }
 
-    @Authorize("hasClaim('aud',#clientid)")
+    @Authorize("hasClaim('aud','#clientid')")
     @RequestMapping(value = "/{clientid}", method = RequestMethod.GET, produces = "application/json")
     @ResponseStatus(value = HttpStatus.OK)
     public @ResponseBody Client getClient(@PathVariable(value = "clientid") @ClaimValue(value = "clientid") final String clientId) {

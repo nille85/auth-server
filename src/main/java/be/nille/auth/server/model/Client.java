@@ -37,8 +37,7 @@ public class Client implements Serializable {
     
     @Embedded
     private Credentials credentials;
-    
-    
+       
 
     @Setter
     @Column(name = "APPLICATION_NAME")

@@ -61,9 +61,7 @@ public class AuthenticationControllerTest {
     
     @Test
     public void authenticate() throws Exception{
-        Credentials credentials = new Credentials();
-        credentials.setClientId("clientid");
-        credentials.setSecret("secret");
+        
         
         Client client = new Client("clientid");
         client.setApplicationName("appName");
@@ -73,7 +71,7 @@ public class AuthenticationControllerTest {
         Mockito.when(jwtSigner.sign(any(Payload.class))).thenReturn(new JWT("jwtvalue"));
         this.mockMvc.perform(post("/auth/token")
                 .header("Content-Type", "application/json")
-                .content(mapper.writeValueAsString(credentials)))
+                .content(mapper.writeValueAsString(client.getCredentials())))
                 .andExpect(status().isOk())
                 .andExpect(header().string("X-AUTH", "jwtvalue"))
                 .andDo(print());
@@ -81,15 +79,15 @@ public class AuthenticationControllerTest {
     
     @Test
     public void authenticateInvalidCredentials() throws Exception{
-        Credentials credentials = new Credentials();
-        credentials.setClientId("clientid");
-        credentials.setSecret("secret");
+        Client client = new Client("clientid");
+        client.setApplicationName("appName");
+        client.setScopes("read,write");
           
         Mockito.when(service.authenticate(any(Credentials.class))).thenThrow(InvalidCredentialsException.class);
       
         this.mockMvc.perform(post("/auth/token")
                 .header("Content-Type", "application/json")
-                .content(mapper.writeValueAsString(credentials)))
+                .content(mapper.writeValueAsString(client.getCredentials())))
                 .andExpect(status().isUnauthorized())
                 .andExpect(header().string("X-AUTH", nullValue()))
                 .andDo(print());

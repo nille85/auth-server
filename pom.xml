@@ -7,6 +7,13 @@
     <artifactId>authorization-server</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>war</packaging>
+    
+    <parent>
+        <artifactId>nille-parent-pom</artifactId>
+        <groupId>be.nille</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+   
 
  
     <properties>
