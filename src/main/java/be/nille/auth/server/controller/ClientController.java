@@ -6,10 +6,7 @@
 package be.nille.auth.server.controller;
 
 import be.nille.auth.server.model.RegisterClientCommand;
-import be.nille.auth.server.cryptography.StringGenerator;
-import be.nille.auth.server.cryptography.UnsecureStringGenerator;
 import be.nille.auth.server.model.Client;
-import be.nille.auth.server.model.ClientRepository;
 import be.nille.auth.server.model.ClientService;
 import be.nille.jwt.aspect.annotation.Authorize;
 import be.nille.jwt.aspect.annotation.ClaimValue;
@@ -44,7 +41,7 @@ public class ClientController {
         return clientService.getClients();
     }
 
-    @Authorize("hasClaim('aud',#clientid)")
+    @Authorize("hasClaim('aud','#clientid')")
     @RequestMapping(value = "/{clientid}", method = RequestMethod.GET, produces = "application/json")
     @ResponseStatus(value = HttpStatus.OK)
     public @ResponseBody Client getClient(@PathVariable(value = "clientid") @ClaimValue(value = "clientid") final String clientId) {

@@ -24,9 +24,7 @@ import org.springframework.transaction.PlatformTransactionManager;
  * @author nholvoet
  */
 @Slf4j
-//@Configuration
-@EnableJpaRepositories(JPARepository.LOCATION)
-public class DatabaseConfig {
+public abstract class JPAConfig {
     
     
 
@@ -36,7 +34,7 @@ public class DatabaseConfig {
         log.debug("setting datasource");
         em.setDataSource(dataSource());
         log.debug("scanning entities");
-        em.setPackagesToScan(new String[]{"be.nille.client.model"});
+        em.setPackagesToScan(new String[]{JPARepository.LOCATION});
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
         log.debug("scanning additional properties");
@@ -45,14 +43,7 @@ public class DatabaseConfig {
     }
 
     @Bean
-    public DataSource dataSource() {
-        DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("org.h2.Driver");
-        dataSource.setUrl("jdbc:h2:tcp://localhost/~/DB");
-        dataSource.setUsername("sa");
-        dataSource.setPassword("");
-        return dataSource;
-    }
+    public abstract DataSource dataSource();
 
     @Bean
     public PlatformTransactionManager transactionManager(EntityManagerFactory emf) {
@@ -66,12 +57,7 @@ public class DatabaseConfig {
         return new PersistenceExceptionTranslationPostProcessor();
     }
 
-    private Properties additionalProperties() {
-        Properties properties = new Properties();
-        properties.setProperty("show_sql", "false");
-        properties.setProperty("hibernate.hbm2ddl.auto", "update");
-        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
-        return properties;
-    }
+    protected abstract Properties additionalProperties();
 
 }
+
