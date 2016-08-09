@@ -25,7 +25,7 @@ public class ClientService {
     }
     
     public Client getClient(final String clientId){
-        return clientRepository.findOne(clientId);
+        return clientRepository.findByCredentialsClientId(clientId);
     }
 
     public List<Client> getClients() {
