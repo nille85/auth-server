@@ -25,9 +25,9 @@ public class Credentials implements Serializable {
     @Column(name = "SECRET")
     private String secret;
     
-    public Credentials(){}
+    protected Credentials(){}
     
-    public Credentials(final String clientId){
+    protected Credentials(final String clientId){
         StringGenerator generator = new SecureStringGenerator(20);
         this.clientId = clientId;
         this.secret = generator.generate();
