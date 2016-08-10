@@ -6,11 +6,14 @@
 package be.nille.auth.server.model.user;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -39,5 +42,12 @@ public class User implements Serializable {
     @Setter
     @Column(name = "ROLE")
     private String role;
+    
+    @OneToMany(mappedBy = "user")
+    private final List<Token> tokens;
+    
+    public User(){
+        tokens = new ArrayList<>();
+    }
     
 }
