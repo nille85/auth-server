@@ -5,9 +5,9 @@
  */
 package be.nille.auth.server.controller;
 
-import be.nille.auth.server.model.RegisterClientCommand;
-import be.nille.auth.server.model.Client;
-import be.nille.auth.server.model.ClientService;
+import be.nille.auth.server.model.client.RegisterClientCommand;
+import be.nille.auth.server.model.client.Client;
+import be.nille.auth.server.model.client.ClientService;
 import be.nille.jwt.aspect.annotation.Authorize;
 import be.nille.jwt.aspect.annotation.ClaimValue;
 import java.util.List;

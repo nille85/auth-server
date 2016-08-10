@@ -8,7 +8,6 @@ package be.nille.auth.server;
 import be.nille.jwt.aspect.JWTAspect;
 import be.nille.jwt.aspect.PayloadService;
 
-
 import be.nille.jwt.components.signer.JWTSigner;
 import be.nille.jwt.components.signer.JWTSecretKeySigner;
 import be.nille.jwt.components.verifier.JWTSecretKeyVerifier;
@@ -25,24 +24,22 @@ import org.springframework.core.env.Environment;
 @Configuration
 @PropertySource("file:${config.home}/application.properties")
 public class JWTConfig {
-    
-   @Autowired
-   private Environment environment;
-    
+
+    @Autowired
+    private Environment environment;
+
     @Bean
-    public JWTSigner signer(){
+    public JWTSigner signer() {
         JWTSigner signer = new JWTSecretKeySigner(environment.getProperty("jwt.secret"));
         return signer;
     }
-    
+
     @Bean
-    public JWTVerifier verifier(){
+    public JWTVerifier verifier() {
         JWTVerifier verifier = new JWTSecretKeyVerifier(environment.getProperty("jwt.secret"));
         return verifier;
     }
-    
-    
-    
+
     @Bean
     public PayloadService payloadService() {
         return new PayloadRequestService(verifier());
@@ -53,6 +50,5 @@ public class JWTConfig {
         JWTAspect aspect = new JWTAspect(payloadService());
         return aspect;
     }
-    
 
 }

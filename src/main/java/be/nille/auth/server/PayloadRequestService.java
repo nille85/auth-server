@@ -23,7 +23,6 @@ public class PayloadRequestService implements PayloadService {
     public PayloadRequestService(final JWTVerifier verifier){
         this.verifier = verifier;
     }
-  
 
     @Override
     public Payload verify() {

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package be.nille.auth.server.model;
+package be.nille.auth.server.model.client;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -46,6 +46,10 @@ public class Client implements Serializable {
     @Setter
     @Column(name = "SCOPES")
     private String scopes;
+    
+    @Setter
+    @Column(name = "resources")
+    private String resources;
     
   
     

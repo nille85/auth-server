@@ -101,6 +101,10 @@
                             <exclude>**/*IT.java</exclude>
                         </excludes>
                         <skipTests>${skip.unit.tests}</skipTests>
+                        <systemProperties>
+                            <config.home>${project.basedir}/config</config.home>
+                            <spring.profiles.active>H2memory</spring.profiles.active>
+                        </systemProperties>  
                     </configuration>
                 </plugin>
                 

@@ -5,11 +5,9 @@
  */
 package be.nille.auth.server.controller;
 
-import be.nille.auth.server.model.Credentials;
-import be.nille.auth.server.model.InvalidCredentialsException;
-import be.nille.auth.server.model.Client;
-import be.nille.auth.server.model.ClientRepository;
-import be.nille.auth.server.model.ClientService;
+import be.nille.auth.server.model.client.Credentials;
+import be.nille.auth.server.model.client.Client;
+import be.nille.auth.server.model.client.ClientService;
 import be.nille.jwt.components.model.JWT;
 import be.nille.jwt.components.signer.JWTSigner;
 import be.nille.jwt.components.model.Payload;
@@ -48,6 +46,7 @@ public class AuthenticationController {
         Payload payload =Payload.builder()
                 .withClaim("iss", "NILLE")
                 .withClaim("aud", client.getCredentials().getClientId())
+                .withExpirationInMinutes(10)
                 .build();
         JWT jwt = jwtSigner.sign(payload);
         response.addHeader("X-AUTH", jwt.getBase64EncodedValue());

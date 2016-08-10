@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package be.nille.auth.server.model;
+package be.nille.auth.server.model.client;
 
 
-import be.nille.auth.server.model.RegisterClientCommand;
-import be.nille.auth.server.model.Client;
+import be.nille.auth.server.model.client.RegisterClientCommand;
+import be.nille.auth.server.model.client.Client;
 import java.util.Set;
 import java.util.TreeSet;
 import static org.junit.Assert.assertEquals;

@@ -7,9 +7,9 @@ package be.nille.auth.server.controller;
 
 import be.nille.auth.server.controller.ClientController;
 import be.nille.auth.server.controller.ErrorControllerAdvice;
-import be.nille.auth.server.model.Client;
-import be.nille.auth.server.model.ClientService;
-import be.nille.auth.server.model.RegisterClientCommand;
+import be.nille.auth.server.model.client.Client;
+import be.nille.auth.server.model.client.ClientService;
+import be.nille.auth.server.model.client.RegisterClientCommand;
 import be.nille.jwt.aspect.JWTAspect;
 import be.nille.jwt.aspect.PayloadService;
 import be.nille.jwt.components.model.Payload;

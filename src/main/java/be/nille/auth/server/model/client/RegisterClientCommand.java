@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package be.nille.auth.server.model;
+package be.nille.auth.server.model.client;
 
-import be.nille.auth.server.model.Client;
+import be.nille.auth.server.model.client.Client;
 import com.auth0.jwt.internal.org.apache.commons.lang3.StringUtils;
 import java.util.HashSet;
 import java.util.List;

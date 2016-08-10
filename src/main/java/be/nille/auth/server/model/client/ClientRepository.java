@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package be.nille.auth.server.model;
+package be.nille.auth.server.model.client;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -15,7 +14,7 @@ import org.springframework.stereotype.Repository;
  * @author nholvoet
  */
 @Repository
-public interface ClientRepository extends JpaRepository<Client, String>, JpaSpecificationExecutor<Client> {
+public interface ClientRepository extends JpaRepository<Client, Long> {
 
     
     Client findByCredentials(Credentials credentials);

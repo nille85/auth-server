@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package be.nille.auth.server.model;
+package be.nille.auth.server.model.client;
 
+import be.nille.auth.server.model.InvalidCredentialsException;
 import be.nille.auth.server.cryptography.StringGenerator;
 import be.nille.auth.server.cryptography.UnsecureStringGenerator;
 import java.util.List;
