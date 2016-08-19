@@ -52,7 +52,7 @@ public class H2MemoryDatabaseConfig extends JPAConfig {
     public Properties additionalProperties() {
         Properties properties = new Properties();
         properties.setProperty("show_sql", "false");
-        properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
+        properties.setProperty("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
         return properties;
     }

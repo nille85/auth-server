@@ -46,11 +46,6 @@ public class Client implements Serializable {
     @Setter
     @Column(name = "SCOPES")
     private String scopes;
-    
-    @Setter
-    @Column(name = "resources")
-    private String resources;
-    
-  
+     
     
 }

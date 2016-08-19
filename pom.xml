@@ -145,7 +145,7 @@
                     <artifactId>tomcat7-maven-plugin</artifactId>
                     <version>${plugin.tomcat7.version}</version>
                     <configuration>
-                        <path>/server</path>
+                        <path>/auth-server</path>
                         <port>8080</port>   
                         <systemProperties>
                             <config.home>${project.basedir}/config</config.home>

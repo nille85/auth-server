@@ -28,13 +28,10 @@ public abstract class JPAConfig {
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-        log.debug("setting datasource");
         em.setDataSource(dataSource());
-        log.debug("scanning entities");
         em.setPackagesToScan(new String[]{JPARepository.LOCATION});
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);
-        log.debug("scanning additional properties");
         em.setJpaProperties(additionalProperties());
         return em;
     }
