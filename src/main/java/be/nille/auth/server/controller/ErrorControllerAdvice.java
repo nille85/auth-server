@@ -8,6 +8,7 @@ package be.nille.auth.server.controller;
 import be.nille.auth.server.model.InvalidCredentialsException;
 import be.nille.jwt.aspect.AuthenticationException;
 import be.nille.jwt.aspect.AuthorizationException;
+import be.nille.jwt.aspect.ExpiredException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -32,9 +33,17 @@ public class ErrorControllerAdvice {
         
     }
     
+    @ResponseStatus(value = HttpStatus.UNAUTHORIZED)
+    @ExceptionHandler(ExpiredException.class)
+    public @ResponseBody  void expiredException(final ExpiredException ex) {
+        
+    }
+    
     @ResponseStatus(value = HttpStatus.FORBIDDEN)
     @ExceptionHandler(AuthorizationException.class)
     public @ResponseBody  void forbiddenException(final AuthorizationException ex) {
         
     }
+    
+    
 }
